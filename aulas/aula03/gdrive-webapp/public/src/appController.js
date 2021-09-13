@@ -50,12 +50,8 @@ export default class AppController {
     }
 
     async onFileChange(files) {
-        // aqui tem um bug conhecido, se no meio do upload
-        // voce fazer outro upload, ele vai fechar o modal e iniciar do zero
-        this.uploadingFiles.clear()
-
         this.viewManager.openModal()
-        this.viewManager.updateStatus(0)
+        this.viewManager.updateStatus(total % 100)
 
         const requests = []
         for (const file of files) {
